@@ -1,46 +1,52 @@
-// var Person = Backbone.Model.extend({});
+var Tree = Backbone.Model.extend({});
 
-// var Person = Backbone.Model.extend({
-// 	initialize: function(){
-// 		console.log("A new person was just created :)");
-// 		this.on('change', this.changeAlert, this);
-// 	},
+var Tree = Backbone.Model.extend({
+	initialize: function(){
+		this.bind('age', this.age)
 
-// 	defaults: {
-// 		name: "Amelia", 
-// 		birthYear: 1991
-// 	}, 
+	},
+	defaults: {
+		age: 0,
+		height: 0,
+		numOranges: 0,
+		HEIGHT_GROWTH: 1, 
+		MIN_ORANGE_AGE: 10, 
+		MAX_ORANGE_AGE: 25
+	}, 
+	age: function(){
+		this.increaseAge();
+		this.increaseHeight();
+		this.setNumOranges();
+	}, 
+	increaseAge: function(){
+		var currentAge = this.get('age');
+		this.set({age: currentAge + 1});
+		console.log("Age:" + (currentAge+1));
+	}, 
+	increaseHeight: function(){
+		var currentHeight = this.get('height');
+		this.set({height: (currentHeight + this.defaults.HEIGHT_GROWTH)});
+		console.log("Height:" + (currentHeight+1));
 
-// 	changeAlert: function() {
-// 		console.log("there has been a change!")
-// 	}
-// });
+	}, 
 
-// var amelia = new Person();
-// var louie = new Person({name: "Louie", birthYear: 1992});
+	setNumOranges: function(){
+		this.set({numOranges: this.calculateNumOranges() });
+		console.log("NumberOfOranges:" + this.get('numOranges'));
+	},
+	calculateNumOranges: function(){
+		if (this.get('age') < this.get('MIN_ORANGE_AGE') || this.get('age') > this.get('MAX_ORANGE_AGE')){
+			return 0;
+		} else {
+			return this.get('age') * 2;
+		}
+	}
+})
 
-// louie.set({name: "LOUIS"});
+var tree = new Tree();
+tree.trigger('age')
 
 
-// Classroom = new Backbone.Collection([amelia, louie]);
 
-// var v = new Backbone.View()
-// var div = v.$el
-// $('body').append(div)
 
-// var Clock = Backbone.View.extend({
-// 	render: function () {
-//       this.$el.empty().append(new Date)
-//       console.log("date was rendered?")
-//     }
-// });
-
-// var clock = new Clock();
-
-// // Append its element to the document body
-// clock.$el.appendTo('body')
-// //-> An empty div is attached to the body
-// //-> because render() has not yet been called
-
-// clock.render()
 
