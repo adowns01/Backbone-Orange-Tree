@@ -13,6 +13,7 @@ var Tree = Backbone.Model.extend({
 		MAX_ORANGE_AGE: CONSTS.maxOrangeAge, 
 		DEATH_AGE: CONSTS.deathAge
 	}, 
+	
 	age: function(){
 		if (this.is_alive()){
 			this.increaseAge();

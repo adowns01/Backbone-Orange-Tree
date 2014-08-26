@@ -2,7 +2,6 @@ var GroveView = Backbone.View.extend({
 
 
 	initialize: function(grove){
-		this.tree = grove
 		this.grove = grove 
 		this.models = grove.models
 		this.listenTo(grove, "change", this.render)

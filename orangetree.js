@@ -1,8 +1,5 @@
 $(document).ready(function(){
-	var tree = new Tree(); 
-	var view = new TreeView(tree);
-
-
+	
 	var orangeGrove = new Grove();
 	var groveView = new GroveView(orangeGrove);
 
