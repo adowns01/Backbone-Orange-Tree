@@ -1,3 +1,11 @@
+$(document).ready(function(){
+	setButtonEventListeners(); 
+})
+
+var setButtonEventListeners = function(){
+	$('#age-button').on('click', ageTree)
+}
+
 var Tree = Backbone.Model.extend({});
 
 var Tree = Backbone.Model.extend({
@@ -44,7 +52,10 @@ var Tree = Backbone.Model.extend({
 })
 
 var tree = new Tree();
-tree.trigger('age')
+
+var ageTree = function(){
+	tree.trigger('age')
+}
 
 
 
