@@ -7,9 +7,9 @@ var Tree = Backbone.Model.extend({
 		age: 0,
 		height: 0,
 		numOranges: 0,
-		HEIGHT_GROWTH: 1, 
-		MIN_ORANGE_AGE: 10, 
-		MAX_ORANGE_AGE: 25, 
+		HEIGHT_GROWTH: CONSTS.heightGrowth, 
+		MIN_ORANGE_AGE: CONSTS.minOrangeAge, 
+		MAX_ORANGE_AGE: CONSTS.maxOrangeAge, 
 		DEATH_AGE: CONSTS.deathAge
 	}, 
 	age: function(){
