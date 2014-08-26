@@ -75,6 +75,7 @@ var TreeView = Backbone.View.extend({
 		this.ageElem().html("Age: " + tree.get('age'))
 		this.heightElem().html("Height: " + tree.get('height'))
 		this.numOrangeElem().html("Oranges: " + tree.get('numOranges'))
+		this.imgElem().attr('src', this.getTreeImageURL())
 	}, 
 
 	ageElem: function(){
@@ -87,6 +88,24 @@ var TreeView = Backbone.View.extend({
 
 	numOrangeElem: function(){
 		return this.$el.children(".num-orange-value");
+	}, 
+
+	imgElem: function(){
+		return this.$el.children(".tree-pic");
+	}, 
+
+	getTreeImageURL: function() {
+		var treeAge = tree.get('age');
+		if (treeAge < tree.get('MIN_ORANGE_AGE')){
+			return "http://fe867b.medialib.glogster.com/media/dc/dc1a7adff862424cd98ee66089d7da17220379f5aa3af0d767382128be5a05ab/baby-tree.jpg"
+		} 
+		else if (treeAge > tree.get('MAX_ORANGE_AGE')){
+			return "http://fc02.deviantart.net/fs70/i/2011/152/9/3/dead_tree_png_by_gd08-d3hs9tf.png"
+		}
+		else {
+			return "http://www.plantsenhance.com/image/cache/data/artificial-orange-tree-150cm-500x700.jpg"
+		}
+
 	}
 
 });
