@@ -2,6 +2,7 @@ $(document).ready(function(){
 	setButtonEventListeners(); 
 })
 
+
 var setButtonEventListeners = function(){
 	$('#age-button').on('click', ageTree)
 }
@@ -57,6 +58,44 @@ var ageTree = function(){
 	tree.trigger('age')
 }
 
+
+var TreeView = Backbone.View.extend({
+	tagName: "div", 
+	className: "tree",
+
+	initialize: function(){
+		this.listenTo(tree, "change", this.render)
+	}, 
+
+	render: function(){
+	}
+
+});
+
+var view = new TreeView();
+
+
+// var DocumentRow = Backbone.View.extend({
+
+//   tagName: "li",
+
+//   className: "document-row",
+
+//   events: {
+//     "click .icon":          "open",
+//     "click .button.edit":   "openEditDialog",
+//     "click .button.delete": "destroy"
+//   },
+
+//   initialize: function() {
+//     this.listenTo(this.model, "change", this.render);
+//   },
+
+//   render: function() {
+//     ...
+//   }
+
+// });
 
 
 
