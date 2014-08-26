@@ -1,6 +1,7 @@
 var Tree = Backbone.Model.extend({
-	initialize: function(){
+	initialize: function(id){
 		this.bind('age', this.age)
+		this.id = id
 
 	},
 	defaults: {

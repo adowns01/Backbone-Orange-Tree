@@ -3,6 +3,7 @@ var Grove = Backbone.Collection.extend({
   age: function(){
   	this.each(function(tree){
   		tree.trigger('age')
+  		console.log(tree.id)
   	})
   }
 });

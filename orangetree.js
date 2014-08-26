@@ -1,10 +1,12 @@
 $(document).ready(function(){
-	// var tree = new Tree(); 
+	var tree = new Tree(); 
+	var view = new TreeView(tree);
 
-	// var view = new TreeView(tree);
 
 	var orangeGrove = new Grove();
-	$('#create-button').on('click', function(){ orangeGrove.add( new Tree() )});
+	var groveView = new GroveView(orangeGrove);
+
+	$('#create-button').on('click', function(){ orangeGrove.add( new Tree(orangeGrove.length) ) } );
 	$('#age-button').on('click', function(){orangeGrove.age()})
 
 })
