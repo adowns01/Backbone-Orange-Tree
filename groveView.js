@@ -47,10 +47,10 @@ var GroveView = Backbone.View.extend({
 
 	getTreeImageURL: function(tree) {
 		var treeAge = tree.get('age');
-		if (treeAge < tree.get('MIN_ORANGE_AGE')){
+		if (treeAge < CONSTS.minOrangeAge){
 			return CONSTS.smallTreeSrc
 		} 
-		else if (treeAge > tree.get('MAX_ORANGE_AGE')){
+		else if (treeAge > CONSTS.maxOrangeAge){
 			return CONSTS.largeTreeSrc
 		}
 		else {
