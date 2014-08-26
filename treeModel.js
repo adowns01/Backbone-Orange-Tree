@@ -7,11 +7,7 @@ var Tree = Backbone.Model.extend({
 	defaults: {
 		age: 0,
 		height: 0,
-		numOranges: 0,
-		HEIGHT_GROWTH: CONSTS.heightGrowth, 
-		MIN_ORANGE_AGE: CONSTS.minOrangeAge, 
-		MAX_ORANGE_AGE: CONSTS.maxOrangeAge, 
-		DEATH_AGE: CONSTS.deathAge
+		numOranges: 0
 	}, 
 	
 	age: function(){
@@ -28,7 +24,7 @@ var Tree = Backbone.Model.extend({
 	}, 
 	increaseHeight: function(){
 		var currentHeight = this.get('height');
-		this.set({height: (currentHeight + this.defaults.HEIGHT_GROWTH)});
+		this.set({height: (currentHeight + CONSTS.heightGrowth)});
 		// console.log("Height:" + (currentHeight+1));
 
 	}, 
@@ -39,7 +35,7 @@ var Tree = Backbone.Model.extend({
 	},
 
 	calculateNumOranges: function(){
-		if (this.get('age') < this.get('MIN_ORANGE_AGE') || this.get('age') > this.get('MAX_ORANGE_AGE')){
+		if (this.get('age') < CONSTS.minOrangeAge || this.get('age') > CONSTS.maxOrangeAge){
 			return 0;
 		} else {
 			return this.get('age') * 2;
@@ -47,7 +43,7 @@ var Tree = Backbone.Model.extend({
 	}, 
 
 	is_alive: function(){
-		if (this.get('age') < this.get('DEATH_AGE')){
+		if (this.get('age') < CONSTS.deathAge){
 			return true
 		}
 			
